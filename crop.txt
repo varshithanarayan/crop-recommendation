@@ -1,0 +1,2 @@
+crop recommendation and crop price prediction using machine learning
+using java and
