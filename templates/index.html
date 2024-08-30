@@ -1,0 +1,183 @@
+{% extends "material/base.html" %}
+{% block content %}
+<div class="showcase container purple lighten-3">
+    <div class="row">
+        <div class="col 12 m10 offset-ml center">
+            <h2>Crop Recommendation </h2>
+            <p>ML Web App</p>
+            <a href="{{url_for('index')}}" class="btn btn-small purple white-text waves-effect waves-dark">Reset</a>
+			<a href="http://127.0.0.1:5000/price" class="btn btn-small purple white-text waves-effect waves-dark">Price</a>
+            
+        </div>
+
+    </div>
+</div>
+<section class="section section-signup">
+        <div class="container">
+          <div class="row">
+           
+            <div class="col s12 m4">
+              <div class="card-panel grey lighten-4 grey-text text-darken-4 z-depth-0">
+                <form action="{{ url_for('analyze')}}" method="POST">
+                  
+                   
+                  
+               
+                  <div class="input-field">
+                    <select id="role" name="region">
+                      <option value="" disabled selected></option>
+                      <option value="1">Mysore</option>
+					
+                    </select>
+                    <label for="role">Select region</label>
+                  </div>
+				  
+				   <div class="input-field">
+                    <select id="role" name="area">
+                      <option value="" disabled selected></option>
+                     <option value="0">T Narasipura</option>
+					<option value="1">Nanjangud</option>
+					<option value="2">Hunsur</option>
+                     <option value="3">K R Nagara</option>
+                     
+                    </select>
+                    <label for="role">Area</label>
+                  </div>
+				  
+				  <div class="input-field">
+                   <p class="range-field">
+                        <input type="text" id="N" name="N" > 
+                    <label for="">Nitrogen</label>
+                  </div>
+				  
+				  <div class="input-field">
+                   <p class="range-field">
+                        <input type="text" id="p" name="p" > 
+                    <label for="">phosphurus</label>
+                  </div>
+				  
+				   <div class="input-field">
+                   <p class="range-field">
+                        <input type="text" id="k" name="k">
+                    <label for="">Pottassium</label>
+                  </div>
+				  
+				  
+				  
+				   <div class="input-field">
+                   <p class="range-field">
+                        <input type="text" id="ph" name="ph">
+                    <label for="">Soil Ph</label>
+                  </div>
+				  				   
+                <div class="input-field">
+                   <p class="range-field">
+                        <input type="text" id="temp" name="temp">
+                    <label for="">Tempreture</label>
+                  </div>
+                
+				
+				 <div class="input-field">
+                   <p class="range-field">
+                        <input type="text" id="humidity" name="humidity">
+                    <label for="">Humidity</label>
+                  </div>
+				  
+				  <div class="input-field">
+                   <p class="range-field">
+                        <input type="text" id="rain" name="rain">
+                    <label for="">Rainfall</label>
+                  </div>
+                  
+				    
+                 
+
+                  <input type="submit" value="Predict" class="btn btn-small purple black-text waves-effect waves-dark" style="color:black;">
+                  <input type="reset" value="Clear" class="btn btn-small purple black-text waves-effect waves-dark">
+                </form>
+              </div>
+            </div>
+             <div class="col s12 m4 offers">
+                     <div class="card-panel purple lighten-4 black-text text-darken-4 z-depth-0">
+					        
+                  
+                           <p>Region: {{ region }}</p>
+						   
+            <p>Area: {{ area }}</p>
+			   
+            
+            <p>Nitrgen: {{ N }}</p>
+            <p>Phosphurus: {{ p }}</p>
+            <p>Pottassium: {{ k }}</p>
+            <p>Soil Ph: {{ ph }}</p>
+            
+            
+			<p>Temprature: {{ temp }}</p>
+			<p>Humidity: {{ humidity }}</p>
+			
+			<p>Rainfall: {{ rain }}</p>
+			 
+            </div>
+                     </div>
+                     
+          
+    
+            
+    
+             <div class="col s12 m4 offers">
+                <h5>Prediction</h5>
+                  <div class="collection" role="alert">
+                    <p  class="collection-item active purple">Predicted class for Naivebayes is {{ class1 }} {{score_nb}} </p>
+					
+					 <p  class="collection-item active purple">Predicted class for KNN is {{ class3 }} {{score_knn}} </p>
+					 <p  class="collection-item active purple">Predicted class for Decision Tree is {{ class4 }} {{score_dt}} </p>
+		
+                </div>       				
+               
+					   
+                      					   
+					
+					
+                
+				<div>
+				   
+                   
+				  
+				  
+				
+			    </div>
+				
+              
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+      {% endblock%}
+
+      {% block scripts %}
+      {{super()}}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       <!-- Compiled and minified JavaScript -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+      <!-- <script type="text/javascript">
+           document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems, options);
+        });
+      </script> -->
+      
+      <script>
+          // Or with jQuery
+      
+        $(document).ready(function(){
+          $('select').formSelect();
+        });
+      </script>
+      
+      {% endblock %}
