@@ -1,1 +1,1 @@
-# crop-recommendation
+# detection of material in recycling facilities 
