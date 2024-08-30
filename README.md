@@ -1,1 +1,1 @@
-# detection of material in recycling facilities 
+# CROP RECOMMENDATION AND PRICE PREDICTION USING MACHINE LEARNING
